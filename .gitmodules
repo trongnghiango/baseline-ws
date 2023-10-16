@@ -1,0 +1,3 @@
+[submodule "apps/express-js-app"]
+	path = apps/express-js-app
+	url = git@github.com:trongnghiango/nodejs-app-with-esbuild.git
