@@ -1,0 +1,384 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "KAKA API",
+    "description": "Description",
+    "version": "1.0.0"
+  },
+  "host": "localhost:9000",
+  "basePath": "/api/v1",
+  "schemes": [
+    "http"
+  ],
+  "securityDefinitions": {
+    "apiKeyAuth": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "X-TOKEN",
+      "description": "Some description..."
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/checkhealth": {
+      "get": {
+        "tags": [
+          "Status"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/me": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/comment": {
+      "post": {
+        "tags": [
+          "Comments"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/auth/signup": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/signinwithusername": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Login",
+            "schema": {
+              "$ref": "#/definitions/LoginBody"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/signin": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Login",
+            "schema": {
+              "$ref": "#/definitions/LoginBody"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/auth/refreshtoken": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/roles/create": {
+      "post": {
+        "tags": [
+          "Roles"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add new role.",
+            "schema": {
+              "$ref": "#/definitions/CreatedRole"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/roles/{id}": {
+      "get": {
+        "tags": [
+          "Roles"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/roles/": {
+      "get": {
+        "tags": [
+          "Roles"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/admin/apikey/create": {
+      "post": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Add new user.",
+            "schema": {
+              "$ref": "#/definitions/CreatedApiKey"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    },
+    "/admin/apikey/list": {
+      "get": {
+        "tags": [
+          "Admin"
+        ],
+        "description": "",
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "LoginBody": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "example": "khakhung"
+        },
+        "password": {
+          "type": "string",
+          "example": "123abcxxx"
+        }
+      },
+      "required": [
+        "username",
+        "password"
+      ]
+    },
+    "CreatedApiKey": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "example": "CCMUD90YvklWvyUNt9n3QtsNoSHzK7U986"
+        },
+        "permissions": {
+          "type": "array",
+          "example": [
+            "GENERAL",
+            "QUAN"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "comments": {
+          "type": "array",
+          "example": [
+            "To be used by the xyz vendor"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "version": {
+          "type": "number",
+          "example": 1
+        }
+      },
+      "required": [
+        "key",
+        "permissions",
+        "comments",
+        "version"
+      ]
+    },
+    "CreatedRole": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "example": "CREATOR"
+        },
+        "key": {
+          "type": "string",
+          "example": "CREATOR"
+        },
+        "description": {
+          "type": "string",
+          "example": "CREATOR"
+        },
+        "notes": {
+          "type": "string",
+          "example": "CREATOR"
+        }
+      },
+      "required": [
+        "code",
+        "key",
+        "description",
+        "notes"
+      ]
+    },
+    "schemas": {
+      "type": "object",
+      "properties": {
+        "CreatedApiKeyBody": {
+          "type": "object",
+          "properties": {
+            "key": {
+              "type": "string",
+              "example": ""
+            },
+            "permissions": {
+              "type": "array",
+              "example": [
+                "GENERAL"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "comments": {
+              "type": "array",
+              "example": [
+                "for agent"
+              ],
+              "items": {
+                "type": "string"
+              }
+            },
+            "version": {
+              "type": "number",
+              "example": 1
+            }
+          },
+          "required": [
+            "key",
+            "permissions",
+            "comments",
+            "version"
+          ]
+        }
+      }
+    }
+  }
+}

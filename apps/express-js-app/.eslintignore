@@ -1,0 +1,9 @@
+./www
+node_modules
+test
+dist
+
+./addons/init-mongo.js
+.eslintrc.cjs
+
+esbuild.*
