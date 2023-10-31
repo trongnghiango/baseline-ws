@@ -1,0 +1,51 @@
+POST /professors HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+ {
+    "firstName": "BBB12",
+    "lastName": "DDD12",
+    "email": "bd12.professor@mail.com"
+  }
+
+###
+GET /professors/raw HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+###
+GET /professors HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+###
+GET /professors/query HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+###
+POST /giaovien/add-many HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+ {
+    "MaGV": "BBB12",
+    "Name": "VKL"
+  }
+
+
+###
+GET /giaovien/list HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+###
+GET /giaovien/1 HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+
+###
+DELETE /giaovien/0 HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json

@@ -1,0 +1,41 @@
+generator client {
+  provider     = "prisma-client-js"
+  relationMode = "prisma"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model GiaoVien {
+  MaGV     String    @id(map: "PK__GiaoVien__2725AEF3808FC43A") @db.VarChar(10)
+  Name     String?   @db.NVarChar(100)
+  NgaySinh DateTime? @db.Date
+  Email    String    @default("default email", map: "DF__GiaoVien__Email__267ABA7A") @db.Char(30)
+  GioiTinh Boolean   @default(false, map: "DF__GiaoVien__GioiTi__276EDEB3")
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model HocSinh {
+  MaHS     String   @id(map: "PK__HocSinh__2725A6EFFAAFB8EA") @db.NVarChar(10)
+  Name     String?  @db.NChar(100)
+  NgaySinh DateTime @default(dbgenerated("2000-01-01"), map: "DF__HocSinh__NgaySin__35BCFE0A") @db.Date
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Customers {
+  id   Int?
+  name String? @db.NVarChar(30)
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model Orders {
+  id         Int?
+  customerId Int?
+
+  @@ignore
+}
