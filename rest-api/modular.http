@@ -1,0 +1,52 @@
+
+GET /catalogue/products HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+###
+GET /user/list HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+### Add new user
+POST /user/create HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+{
+  "email": "nghiango4@gmail.com",
+  "name": "nghiango4"
+}
+
+### add many user
+
+PUT /user/addmany HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+[
+  { "name": "john5", "email": "john5@gmail.com" },
+  { "name": "john1", "email": "john1@gmail.com" },
+  { "name": "john2", "email": "john2@gmail.com" },
+  { "name": "john3", "email": "john3@gmail.com" }
+]
+
+
+### add many user
+
+POST /user/createMany HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
+
+[
+  { "name": "john5", "email": "john5@gmail.com" },
+  { "name": "john1", "email": "john1@gmail.com" },
+  { "name": "john2", "email": "john2@gmail.com" },
+  { "name": "john3", "email": "john3@gmail.com" }
+]
+
+
+### Delete user by user_id
+DELETE /user/4 HTTP/1.1
+Host: 127.0.0.1:3000
+Content-Type: application/json
