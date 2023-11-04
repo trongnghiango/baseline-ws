@@ -19,23 +19,6 @@ model GiaoVien {
 
 /// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 model HocSinh {
-  MaHS     String   @id(map: "PK__HocSinh__2725A6EFFAAFB8EA") @db.NVarChar(10)
-  Name     String?  @db.NChar(100)
-  NgaySinh DateTime @default(dbgenerated("2000-01-01"), map: "DF__HocSinh__NgaySin__35BCFE0A") @db.Date
-}
-
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
-model Customers {
-  id   Int?
-  name String? @db.NVarChar(30)
-
-  @@ignore
-}
-
-/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
-model Orders {
-  id         Int?
-  customerId Int?
-
-  @@ignore
+  MaHS String  @id(map: "PK__HocSinh__2725A6EFFAAFB8EA") @db.NVarChar(10)
+  Name String? @db.NChar(100)
 }
